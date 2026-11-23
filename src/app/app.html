@@ -1,20 +1,3 @@
 <app-reader-header />
-<div class="app-body">
-  <app-sidebar />
-  <main class="app-main">
-    <app-question-navigation
-      [currentIndex]="testIndex()"
-      [total]="testTotal"
-      (previous)="goPrevious()"
-      (next)="goNext()"
-    />
-    <app-question-dropdown
-  [questions]="testQuestions"
-  [selectedId]="testQuestions[testIndex()].id"
-  (questionSelected)="selectQuestion($event)"
-/>
-<app-question-content [question]="currentParsed()" />
-    <router-outlet />
-  </main>
-</div>
+<router-outlet />
 <app-footer />

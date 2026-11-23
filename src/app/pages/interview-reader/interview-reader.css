@@ -1,0 +1,43 @@
+:host {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+
+.reader-main {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+}
+
+.reader-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dropdown-row {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.bottom-nav {
+  display: block;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.status {
+  text-align: center;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  :host {
+    flex-direction: column;
+  }
+
+  .reader-main {
+    padding: 16px;
+  }
+}

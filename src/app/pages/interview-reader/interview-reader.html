@@ -1,0 +1,38 @@
+<app-sidebar
+  [topics]="state.topics()"
+  [counts]="state.topicCounts()"
+  [selectedId]="state.topic()?.id ?? null"
+  (topicSelected)="onTopic($event)"
+/>
+
+<main class="reader-main">
+  <div class="reader-inner">
+    @if (state.question(); as q) {
+      <app-question-navigation
+        [currentIndex]="state.questionIndex()"
+        [total]="state.questions().length"
+        (previous)="goPrevious()"
+        (next)="goNext()"
+      />
+
+      <app-question-dropdown
+        class="dropdown-row"
+        [questions]="state.questionOptions()"
+        [selectedId]="q.id"
+        (questionSelected)="selectQuestion($event)"
+      />
+
+      <app-question-content [question]="q" />
+
+      <app-question-navigation
+        class="bottom-nav"
+        [currentIndex]="state.questionIndex()"
+        [total]="state.questions().length"
+        (previous)="goPrevious()"
+        (next)="goNext()"
+      />
+    } @else {
+      <p class="status">{{ message() }}</p>
+    }
+  </div>
+</main>
