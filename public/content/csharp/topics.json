@@ -1,0 +1,8 @@
+[
+  {
+    "id": "fundamentals",
+    "name": "C# Fundamentals",
+    "description": "Basic C# and .NET concepts",
+    "file": "fundamentals.md"
+  }
+]

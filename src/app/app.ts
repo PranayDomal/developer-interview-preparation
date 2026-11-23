@@ -1,10 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { ReaderHeader } from './components/reader-header/reader-header';
 import { Sidebar } from './components/sidebar/sidebar';
 import { QuestionNavigation } from './components/question-navigation/question-navigation';
 import { QuestionDropdown } from './components/question-dropdown/question-dropdown';
+import { switchMap } from 'rxjs';
+import { ContentService } from './services/content.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,23 @@ import { QuestionDropdown } from './components/question-dropdown/question-dropdo
 })
 export class App {
   protected readonly title = signal('csharp-interview-reader');
+
+
+  // TEMPORARY: proves the loading and parsing works
+private content = inject(ContentService);
+
+constructor() {
+  this.content
+    .getSubjects()
+    .pipe(
+      switchMap((subjects) =>
+        this.content.getTopics(subjects[0]).pipe(
+          switchMap((topics) => this.content.getQuestions(subjects[0], topics[0])),
+        ),
+      ),
+    )
+    .subscribe((questions) => console.log('Parsed questions:', questions));
+}
 
   // TEMPORARY: for testing only
 testQuestions = [
