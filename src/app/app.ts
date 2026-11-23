@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { ReaderHeader } from './components/reader-header/reader-header';
@@ -7,10 +7,12 @@ import { QuestionNavigation } from './components/question-navigation/question-na
 import { QuestionDropdown } from './components/question-dropdown/question-dropdown';
 import { switchMap } from 'rxjs';
 import { ContentService } from './services/content.service';
+import { QuestionContent } from './components/question-content/question-content';
+import { Question } from './models/content.models';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ReaderHeader, Footer, Sidebar, QuestionNavigation, QuestionDropdown],
+  imports: [RouterOutlet, ReaderHeader, Footer, Sidebar, QuestionNavigation, QuestionDropdown, QuestionContent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -31,8 +33,17 @@ constructor() {
         ),
       ),
     )
-    .subscribe((questions) => console.log('Parsed questions:', questions));
+    .subscribe((questions) => {
+  console.log('Parsed questions:', questions);
+  this.parsed.set(questions);
+});
 }
+
+parsed = signal<Question[]>([]);
+currentParsed = computed(() => {
+  const list = this.parsed();
+  return list.length ? list[this.testIndex() % list.length] : null;
+});
 
   // TEMPORARY: for testing only
 testQuestions = [

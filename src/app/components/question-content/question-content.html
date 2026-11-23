@@ -1,0 +1,40 @@
+@if (question(); as q) {
+  <article class="question">
+    <header class="question-header">
+      <h2 class="question-title">{{ q.title }}</h2>
+      @if (q.difficulty) {
+        <span class="badge" [class]="'badge badge-' + q.difficulty">{{ q.difficulty }}</span>
+      }
+    </header>
+
+    @if (explanationHtml()) {
+      <button
+        type="button"
+        class="more-btn"
+        aria-controls="explanation"
+        [attr.aria-expanded]="showExplanation()"
+        (click)="toggle()"
+      >
+        <span class="dots" aria-hidden="true">•••</span>
+        <span class="more-label">
+          {{ showExplanation() ? 'Hide detailed explanation' : 'Show detailed explanation' }}
+        </span>
+      </button>
+
+      @if (showExplanation()) {
+        <section id="explanation" class="explanation md" [innerHTML]="explanationHtml()"></section>
+      }
+    }
+
+    <section class="answer">
+      <h3 class="answer-title">How to Answer in an Interview</h3>
+      @if (answerHtml()) {
+        <div class="md" [innerHTML]="answerHtml()"></div>
+      } @else {
+        <p class="empty">No interview answer has been written for this question yet.</p>
+      }
+    </section>
+  </article>
+} @else {
+  <p class="empty">Select a topic to start reading.</p>
+}

@@ -13,6 +13,7 @@
   [selectedId]="testQuestions[testIndex()].id"
   (questionSelected)="selectQuestion($event)"
 />
+<app-question-content [question]="currentParsed()" />
     <router-outlet />
   </main>
 </div>
