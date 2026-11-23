@@ -1,0 +1,63 @@
+.question-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px; /* comfortable tap target on phones */
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+.nav-btn:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+.nav-btn:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.nav-current {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+}
+
+.nav-total {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Very small phones: keep only the arrows so everything fits on one line */
+@media (max-width: 480px) {
+  .btn-text {
+    display: none;
+  }
+
+  .nav-btn {
+    min-width: 48px;
+    justify-content: center;
+    padding: 0 12px;
+  }
+}

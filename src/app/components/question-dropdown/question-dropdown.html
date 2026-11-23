@@ -1,0 +1,18 @@
+<div class="question-dropdown">
+  <label class="visually-hidden" for="question-select">Select question</label>
+  <select
+    id="question-select"
+    class="dropdown-select"
+    [disabled]="questions().length === 0"
+    (change)="onChange($event)"
+  >
+    @if (questions().length === 0) {
+      <option>No questions available</option>
+    }
+    @for (q of questions(); track q.id; let i = $index) {
+      <option [value]="q.id" [selected]="q.id === selectedId()">
+        {{ i + 1 }}. {{ q.title }}
+      </option>
+    }
+  </select>
+</div>

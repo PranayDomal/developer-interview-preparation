@@ -1,0 +1,35 @@
+<button
+  class="menu-toggle"
+  type="button"
+  aria-controls="topic-sidebar"
+  [attr.aria-expanded]="isOpen()"
+  (click)="toggle()"
+>
+  ☰ Topics
+</button>
+
+@if (isOpen()) {
+  <div class="backdrop" (click)="close()"></div>
+}
+
+<aside id="topic-sidebar" class="sidebar" [class.open]="isOpen()">
+  <h2 class="sidebar-title">Topics</h2>
+  <nav aria-label="Interview topics">
+    <ul class="topic-list">
+      @for (topic of topics; track topic.id) {
+        <li>
+          <button
+            type="button"
+            class="topic-item"
+            [class.active]="topic.id === selectedTopicId()"
+            [attr.aria-current]="topic.id === selectedTopicId() ? 'true' : null"
+            (click)="selectTopic(topic)"
+          >
+            <span class="topic-name">{{ topic.name }}</span>
+            <span class="topic-count">{{ topic.questionCount }}</span>
+          </button>
+        </li>
+      }
+    </ul>
+  </nav>
+</aside>

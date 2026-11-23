@@ -1,0 +1,28 @@
+<nav class="question-nav" aria-label="Question navigation">
+  <button
+    type="button"
+    class="nav-btn"
+    aria-label="Previous question"
+    [disabled]="isFirst()"
+    (click)="previous.emit()"
+  >
+    <span aria-hidden="true">←</span>
+    <span class="btn-text">Previous</span>
+  </button>
+
+  <span class="nav-current" aria-live="polite">
+    Question {{ questionLabel() }}
+    <span class="nav-total">/ {{ total() }}</span>
+  </span>
+
+  <button
+    type="button"
+    class="nav-btn"
+    aria-label="Next question"
+    [disabled]="isLast()"
+    (click)="next.emit()"
+  >
+    <span class="btn-text">Next</span>
+    <span aria-hidden="true">→</span>
+  </button>
+</nav>

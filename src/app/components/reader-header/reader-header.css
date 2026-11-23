@@ -1,0 +1,35 @@
+.reader-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #1f2937;
+  color: #ffffff;
+  border-bottom: 1px solid #374151;
+}
+
+.brand-icon {
+  flex-shrink: 0;
+  background: #7c3aed;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .reader-header {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+}

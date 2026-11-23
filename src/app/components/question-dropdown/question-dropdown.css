@@ -1,0 +1,44 @@
+.question-dropdown {
+  width: 100%;
+}
+
+.dropdown-select {
+  width: 100%;
+  min-height: 44px; /* comfortable tap target */
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 16px; /* 16px stops iOS from zooming in on focus */
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.dropdown-select:hover:not(:disabled) {
+  border-color: #7c3aed;
+}
+
+.dropdown-select:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+.dropdown-select:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Hidden visually, still read by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
