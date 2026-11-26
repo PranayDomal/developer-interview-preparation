@@ -1,4 +1,13 @@
 <header class="reader-header">
   <span class="brand-icon">&lt;/&gt;</span>
   <h1 class="brand-title">Developer Interview Preparation</h1>
+
+  @if (state.subjects().length > 0) {
+    <label class="visually-hidden" for="subject-select">Subject</label>
+    <select id="subject-select" class="subject-select" (change)="onSubjectChange($event)">
+      @for (s of state.subjects(); track s.id) {
+        <option [value]="s.id" [selected]="s.id === state.subjectId()">{{ s.name }}</option>
+      }
+    </select>
+  }
 </header>

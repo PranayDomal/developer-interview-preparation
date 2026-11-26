@@ -100,23 +100,56 @@ app-question-content {
 .md code { padding: 1px 6px; border-radius: 4px; background: #f3f4f6; font-family: Consolas, 'Courier New', monospace; font-size: 0.9em; }
 .md strong { font-weight: 700; }
 
-/* Code blocks scroll inside the block, never the whole page */
+/* Code blocks: light theme, scrolls inside the block, never the whole page */
 .md .code-block {
   margin: 0 0 12px;
   padding: 16px;
   overflow-x: auto;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  background: #0d1117;
-  line-height: 1.5;
+  background: #f5f5f5;
+  line-height: 1.6;
   -webkit-overflow-scrolling: touch;
 }
 .md .code-block code,
 .md .code-block code.hljs {
   padding: 0;
   background: transparent;
+  color: #24292e;
   font-family: Consolas, 'Courier New', monospace;
   font-size: 0.9rem;
 }
+
+/* Syntax colors */
+.hljs-keyword,
+.hljs-literal,
+.hljs-operator,
+.hljs-selector-tag,
+.hljs-meta .hljs-keyword { color: #b0155f; }          /* using, class, public, const */
+
+.hljs-type,
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-title.class_.inherited__ { color: #6f4fa0; }    /* Circle, DateTime, Program */
+
+.hljs-title.function_,
+.hljs-title { color: #24292e; }                        /* method names */
+
+.hljs-number { color: #0086b3; }                       /* 3.14159 */
+.hljs-string,
+.hljs-regexp { color: #0a7a3d; }                       /* "text" */
+
+.hljs-comment,
+.hljs-quote { color: #8a8f98; }                        /* // comments */
+
+.hljs-meta { color: #6f4fa0; }                         /* [Attributes], #regions */
+.hljs-attr,
+.hljs-attribute,
+.hljs-name,
+.hljs-tag { color: #b0155f; }                          /* HTML, JSON keys */
+.hljs-params,
+.hljs-variable,
+.hljs-property { color: #24292e; }
 
 /* Tables */
 .md .table-wrap { margin: 0 0 12px; overflow-x: auto; }

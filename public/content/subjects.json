@@ -4,5 +4,11 @@
     "name": "C#",
     "description": "C# language fundamentals to advanced concepts",
     "folder": "csharp"
+  },
+  {
+    "id": "mvc",
+    "name": "ASP.NET MVC",
+    "description": "MVC pattern, routing, controllers and views",
+    "folder": "mvc"
   }
 ]
